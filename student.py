@@ -1,61 +1,54 @@
-# student.py
-# Program to calculate student grade
-
 import sys
-
-def calculate_average(m1, m2, m3):
-    return (m1 + m2 + m3) / 3
-
-def assign_grade(avg):
-    if avg >= 90:
+def calculate_grade(avg):
+    if 90 <= avg <= 100:
         return "S"
-    elif avg >= 80:
+    elif 80 <= avg < 90:
         return "A"
-    elif avg >= 65:
+    elif 65 <= avg < 80:
         return "B"
-    elif avg >= 50:
+    elif 50 <= avg < 65:
         return "C"
-    elif avg >= 40:
+    elif 40 <= avg < 50:
         return "D"
     else:
         return "F"
 
+def print_grade_table():
+    print("===== GRADING CRITERIA =====")
+    print("+------------+---------+")
+    print("| Marks (%)  | Grade   |")
+    print("+------------+---------+")
+    print("| 90 - 100   |   S     |")
+    print("| 80 - 89    |   A     |")
+    print("| 65 - 79    |   B     |")
+    print("| 50 - 64    |   C     |")
+    print("| 40 - 49    |   D     |")
+    print("| Below 40   |   F     |")
+    print("+------------+---------+")
+
 def main():
-    print("=== Student Grade Calculator ===")
+    if len(sys.argv) != 7:
+        print("Usage: python Student.py <name> <department> <semester> <m1> <m2> <m3>")
+        sys.exit(1)
 
-    try:
-        # Command-line input
-        if len(sys.argv) == 7:
-            name = sys.argv[1]
-            department = sys.argv[2]
-            semester = int(sys.argv[3])
-            m1 = float(sys.argv[4])
-            m2 = float(sys.argv[5])
-            m3 = float(sys.argv[6])
+    name = sys.argv[1]
+    department = sys.argv[2]
+    semester = sys.argv[3]
+    marks1 = int(sys.argv[4])
+    marks2 = int(sys.argv[5])
+    marks3 = int(sys.argv[6])
 
-        # User input
-        else:
-            name = f("Enter Student Name: ")
-            department = f("Enter Department: ")
-            semester = int(f("Enter Semester: "))
-            m1 = float(f("Enter marks in Subject 1: "))
-            m2 = float(f("Enter marks in Subject 2: "))
-            m3 = float(f("Enter marks in Subject 3: "))
+    average = (marks1 + marks2 + marks3) / 3
+    grade = calculate_grade(average)
 
-        print("\n--- Student Details ---")
-        print("Student Name :", name)
-        print("Department   :", department)
-        print("Semester     :", semester)
-        print("Marks        :", m1, m2, m3)
+    print_grade_table()
 
-        average = calculate_average(m1, m2, m3)
-        grade = assign_grade(average)
-
-        print("\nAverage :", f"{average:.2f}")
-        print("Grade   :", grade)
-
-    except ValueError:
-        print("Invalid input. Please enter valid numeric values.")
+    print("\n===== STUDENT DETAILS =====")
+    print(f"Name       : {name}")
+    print(f"Department : {department}")
+    print(f"Semester   : {semester}")
+    print(f"Average    : {average:.2f}")
+    print(f"Grade      : {grade}")
 
 if __name__ == "__main__":
     main()
