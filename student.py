@@ -35,12 +35,12 @@ def main():
 
         # User input
         else:
-            name = input("Enter Student Name: ")
-            department = input("Enter Department: ")
-            semester = int(input("Enter Semester: "))
-            m1 = float(input("Enter marks in Subject 1: "))
-            m2 = float(input("Enter marks in Subject 2: "))
-            m3 = float(input("Enter marks in Subject 3: "))
+            name = f("Enter Student Name: ")
+            department = f("Enter Department: ")
+            semester = int(f("Enter Semester: "))
+            m1 = float(f("Enter marks in Subject 1: "))
+            m2 = float(f("Enter marks in Subject 2: "))
+            m3 = float(f("Enter marks in Subject 3: "))
 
         print("\n--- Student Details ---")
         print("Student Name :", name)
